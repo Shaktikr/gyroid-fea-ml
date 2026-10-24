@@ -112,6 +112,7 @@ overfitting beginning, and it is why depth 10 was used.
 gyroid_ml_pipeline.py    complete pipeline: load -> EDA -> train -> diagnose
 data/                    Abaqus FEA results (gyroid_fea_results.xlsx)
 figures/                 generated plots
+docs/                    project presentation (MSE643 slides)
 requirements.txt
 ```
 
@@ -130,4 +131,4 @@ every figure is regenerated on each run.
 
 Course project for **MSE643 — Artificial Intelligence and Machine Learning in Materials
 Engineering** (AI/ML track), Department of Materials Science and Engineering,
-IIT Kanpur.
+IIT Kanpur. Slides: [docs/MSE643_Gyroid_ML_Presentation.pptx](docs/MSE643_Gyroid_ML_Presentation.pptx).
