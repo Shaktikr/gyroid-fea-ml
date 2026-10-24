@@ -4,7 +4,7 @@ Predicting the compressive stress response of gyroid triply periodic minimal sur
 (TPMS) lattices from finite element simulation data, so that a candidate geometry can
 be evaluated without running a new Abaqus job for every design.
 
-![Model comparison](figures/03_model_comparison.png)
+![Actual vs predicted stress](figures/06_actual_vs_predicted.png)
 
 ## Problem
 
@@ -97,34 +97,39 @@ overfitting beginning, and it is why depth 10 was used.
 
 | File | Shows |
 |---|---|
-| `01_eda_stress_strain.png` | stress-strain curves for all five geometries |
-| `02_eda_correlation_heatmap.png` | feature correlations |
-| `03_model_comparison.png` | test metrics across the five models |
-| `04_cv_boxplot.png` | cross-validation score distributions |
-| `05_feature_importance.png` | random forest feature importances |
-| `06_actual_vs_predicted.png` | parity plot and residuals for the best model |
-| `07_bias_variance_complexity_curve.png` | tree depth vs train/test score |
-| `08_tuning_comparison.png` | effect of hyperparameter tuning |
+| [`02_eda_correlation_heatmap.png`](figures/02_eda_correlation_heatmap.png) | feature correlations |
+| [`04_cv_boxplot.png`](figures/04_cv_boxplot.png) | cross-validation score distributions |
+| [`05_feature_importance.png`](figures/05_feature_importance.png) | random forest feature importances |
+| [`06_actual_vs_predicted.png`](figures/06_actual_vs_predicted.png) | parity plot and residuals for the best model |
+| [`07_bias_variance_complexity_curve.png`](figures/07_bias_variance_complexity_curve.png) | tree depth vs train/test score |
+| [`08_tuning_comparison.png`](figures/08_tuning_comparison.png) | effect of hyperparameter tuning |
+
+The script also writes `01_eda_stress_strain.png` (stress-strain curves for all five
+geometries) and `03_model_comparison.png` (test metrics across the five models) when it
+is run.
 
 ## Repository layout
 
 ```
 gyroid_ml_pipeline.py    complete pipeline: load -> EDA -> train -> diagnose
-data/                    Abaqus FEA results (Excel export)
-figures/                 all generated plots
+data/                    place gyroid_fea_results.xlsx here (not yet in the repo)
+figures/                 generated plots
 docs/                    project presentation
 requirements.txt
 ```
 
 ## Running it
 
+The Abaqus export (`gyroid_fea_results.xlsx`) is not included in this repository yet.
+Put it at `data/gyroid_fea_results.xlsx`, then:
+
 ```bash
 pip install -r requirements.txt
 python gyroid_ml_pipeline.py
 ```
 
-Everything is recomputed from the raw Excel file — no metric in this README is
-hard-coded. Every figure above is regenerated on each run.
+Every metric in this README is recomputed from that file — none is hard-coded — and
+every figure is regenerated on each run.
 
 ## Context
 
