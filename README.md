@@ -22,6 +22,11 @@ for screening?
 The data come from displacement-controlled compression simulations of gyroid lattices
 in Abaqus.
 
+![Abaqus model: gyroid lattice between two loading plates](figures/00_abaqus_model.png)
+
+*The Abaqus model: the gyroid sits between two loading plates, each driven through a
+reference point (RP).*
+
 - **Material:** Ti-6Al-4V, loaded only within its elastic range
 - **Boundary conditions:** bottom plate fully fixed; top plate moved down by a prescribed
   displacement
