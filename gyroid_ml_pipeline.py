@@ -226,7 +226,12 @@ numeric_feats = ["Unit_Cell_Length", "Unit_Cell_Thickness", "Strain",
 transformer_poly = ColumnTransformer(transformers=[
     ("ohe", OneHotEncoder(handle_unknown="ignore"), ["Geometry_ID"]),
     ("st", StandardScaler(), numeric_feats),
-    ("poly", PolynomialFeatures(degree=2, include_bias=False), numeric_feats),
+    # Scale BEFORE expanding: raw area^2 is ~1e7 while strain^2 is ~1e-5, and
+    # that spread makes the least-squares problem so ill-conditioned that
+    # recent scikit-learn versions return a near-useless fit (R2 ~ 0.07).
+    ("poly", Pipeline([("sc", StandardScaler()),
+                       ("pf", PolynomialFeatures(degree=2, include_bias=False))]),
+     numeric_feats),
 ], remainder="drop")
 
 transformer_plain = ColumnTransformer(transformers=[
