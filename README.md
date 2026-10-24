@@ -17,6 +17,23 @@ The question this project asks: can a model trained on a small set of simulated
 geometries predict the stress response of the lattice accurately enough to be useful
 for screening?
 
+## Simulation setup
+
+The data come from displacement-controlled compression simulations of gyroid lattices
+in Abaqus.
+
+- **Material:** Ti-6Al-4V, loaded only within its elastic range
+- **Boundary conditions:** bottom plate fully fixed; top plate moved down by a prescribed
+  displacement
+- **Runs:** 5 geometries × 5 displacements (0.050, 0.065, 0.070, 0.080 and 0.100 mm) =
+  25 runs, each recorded at about 100 time steps over a 0.5 s step
+- **Recorded per step:** internal energy (ALLIE), kinetic energy (ALLKE), reaction force
+  (RF2) and displacement (U2) of the loaded plate. Engineering stress is RF2 divided by
+  the cross-sectional area, and engineering strain is U2 divided by the specimen height.
+- **Loading range:** peak engineering strain 0.08–0.5 % and peak engineering stress
+  26–91 MPa. Kinetic energy stays negligible (at most 1.7 N·mm, against up to
+  14,000 N·mm of internal energy), so the response is quasi-static.
+
 ## Dataset
 
 Abaqus compression simulations of **5 gyroid geometries**, exported as time-step
